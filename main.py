@@ -5,17 +5,18 @@ import matplotlib.pyplot as plt
 from time import sleep
 from utils import make_certificates
 
-datas = pd.read_csv('datas.csv')
+datas = pd.read_csv('kurs2.csv')
 
 st.set_page_config('Sertifikatlar sahifasi','📔','centered','collapsed')
 
 st.write("""
-# 2-oraliq nazorat ballari
-O'zbekiston Milliy universitetining Jizzax filiali Kompyuter ilmlari va dasturlash texnologiyalari yo'nalishi 471-22 va 472-22 guruh talabalarining oraliq nazorat baholarini chop etishning
+# 1-oraliq nazorat ballari
+O'zbekiston Milliy universitetining Jizzax filiali Kompyuter ilmlari va dasturlash texnologiyalari yo'nalishi 171-23 va 172-23 guruh talabalarining oraliq nazorat baholarini chop etishning
 """)
 st.markdown("## :rainbow[SERTIFIKATLAR BO'LIMI]")
 
-st.logo('jbnuu_logo.png', size='large')
+
+st.logo('jbnuu_logo.png')
 
 tab1,tab2 = st.tabs(["Ma'lumotlar bo'limi", "Statistika bo'limi"])
 
@@ -30,7 +31,7 @@ with tab1:
     umumiy_ball = selected_fio[savol_ustunlari].sum(axis=1).iloc[0]
     st.write("Sizning umumiy ballingiz:",int(umumiy_ball))
     
-    sertifikat_tayyorlash = st.button("Sertifikat tayyorlash",type='primary', icon='✏️')
+    sertifikat_tayyorlash = st.button("Sertifikat tayyorlash",type='primary')
     if sertifikat_tayyorlash:
         with st.spinner("Ma'lumotlaringiz qabul qilindi. Iltimos ozgina vaqt kutib turing"):
             # Sertifikat rasmini yaratish
@@ -45,8 +46,7 @@ with tab1:
                 data=sertifikat_bytes,
                 file_name=f"sertifikat_{selected_fio['FIO'].iloc[0]}.png",
                 mime="image/png",
-                type='primary',
-                icon='📥'
+                type='primary'
             )
            
 with tab2:
